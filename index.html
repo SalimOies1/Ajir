@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أجر | Ajrt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ===== شاشة البداية (Splash Screen) ===== -->
+    <div class="splash" id="splash">
+        <img class="splash-bg" src="HERO.png" alt="">
+        <div class="splash-scrim"></div>
+
+        <header class="splash-top">
+            <div class="logo">
+                <span class="logo-icon" data-icon="leaf"></span>
+                <span class="logo-text">Ajrt | اجر</span>
+            </div>
+        </header>
+
+        <div class="splash-content">
+            <h1 class="splash-title" id="splashTitle">
+                <span class="splash-typed" id="splashTyped"></span><span class="splash-caret" aria-hidden="true"></span>
+            </h1>
+            <p class="splash-subtitle" id="splashSubtitle"></p>
+            <button class="splash-button" id="splashButton">
+                <span id="splashButtonLabel">تبرع الآن</span>
+                <span class="arrow" id="splashButtonArrow">←</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- ===== الصفحة الرئيسية ===== -->
+    <div class="home" id="home" hidden>
+        <header class="top-bar">
+            <button class="lang-button" id="langButton">EN</button>
+            <div class="logo">
+                <span class="logo-icon" data-icon="leaf"></span>
+                <span class="logo-text">Ajrt | اجر</span>
+            </div>
+            <button class="menu-button" aria-label="فتح القائمة">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </header>
+
+        <main class="hero">
+            <div class="hero-text">
+                <h1 id="heroTitle">الخير بين يديك</h1>
+                <p id="heroSubtitle">كن سبباً في تغيير حياة<br>أحدهم اليوم</p>
+                <button class="hero-button">
+                    <span id="heroButtonLabel">تبرع الآن</span>
+                    <span class="arrow" id="heroButtonArrow">←</span>
+                </button>
+            </div>
+
+            <div class="hero-image-wrap">
+                <img class="hero-img" src="HERO.png" alt="يدان تحملان تربة تنمو منها نبتة خضراء، ترمز للعطاء والأمل">
+            </div>
+        </main>
+    </div>
+
+    <!-- ===== شاشة تسجيل الدخول / حساب جديد ===== -->
+    <div class="view auth" id="auth" hidden>
+        <header class="top-bar">
+            <button class="lang-button" id="authLangButton">EN</button>
+            <div class="logo">
+                <span class="logo-icon" data-icon="leaf"></span>
+                <span class="logo-text">Ajrt | اجر</span>
+            </div>
+            <button class="back-button" id="authBack" data-i18n="back">رجوع</button>
+        </header>
+
+        <main class="auth-card">
+            <div class="auth-tabs" role="tablist">
+                <button class="auth-tab is-active" id="tabLogin" role="tab" data-i18n="tabLogin">تسجيل الدخول</button>
+                <button class="auth-tab" id="tabRegister" role="tab" data-i18n="tabRegister">مستخدم جديد</button>
+            </div>
+
+            <form class="auth-form" id="authForm" novalidate>
+                <label for="authUser" data-i18n="username">اسم المستخدم</label>
+                <input type="text" id="authUser" autocomplete="username" required>
+
+                <label for="authPass" data-i18n="password">كلمة المرور</label>
+                <input type="password" id="authPass" autocomplete="current-password" required>
+
+                <p class="auth-error" id="authError" role="alert"></p>
+
+                <button type="submit" class="hero-button auth-submit" id="authSubmit">
+                    <span id="authSubmitLabel" data-i18n="loginBtn">دخول</span>
+                </button>
+            </form>
+        </main>
+    </div>
+
+    <!-- ===== الصفحة الرئيسية للبرنامج (مستخدم عادي) ===== -->
+    <div class="view app" id="app" hidden>
+        <header class="top-bar">
+            <button class="lang-button" id="appLangButton">EN</button>
+            <div class="logo">
+                <span class="logo-icon" data-icon="leaf"></span>
+                <span class="logo-text">Ajrt | اجر</span>
+            </div>
+            <div class="bar-actions">
+                <button class="icon-button" id="bellBtn" data-icon="bell" data-i18n-aria="notifications" aria-label="الإشعارات"></button>
+                <button class="icon-button" id="menuBtn" data-icon="menu" data-i18n-aria="menu" aria-label="القائمة"></button>
+            </div>
+        </header>
+
+        <main class="app-main">
+            <!-- بانر الحالات (سلايدر تلقائي) -->
+            <section class="cases" aria-labelledby="casesTitle">
+                <h2 class="sr-only" id="casesTitle" data-i18n="casesTitle">حالات تحتاج مساعدتك</h2>
+                <div class="banner-wrap">
+                    <div class="case-card" id="caseCard" tabindex="0" role="button" aria-roledescription="carousel">
+                        <div class="case-slides" id="caseSlides"></div>
+                    </div>
+                    <button type="button" class="banner-arrow banner-arrow-left" id="arrowLeft" data-icon="chevL" data-i18n-aria="prevCase" aria-label="السابق"></button>
+                    <button type="button" class="banner-arrow banner-arrow-right" id="arrowRight" data-icon="chevL" data-i18n-aria="nextCase" aria-label="التالي"></button>
+                    <div class="cases-dots" id="casesDots"></div>
+                </div>
+            </section>
+
+            <!-- قسم: تبرع حسب الفئة -->
+            <section class="categories" aria-labelledby="catsTitle">
+                <h2 class="section-title" id="catsTitle" data-i18n="catsTitle">تبرع حسب الفئة</h2>
+                <p class="section-sub" data-i18n="catsSub">اختر نوع التبرع الذي ترغب به واستكشف الحالات المناسبة لك</p>
+                <div class="cats-grid" id="catsGrid"></div>
+            </section>
+
+            <!-- قسم: مشاريعنا -->
+            <section class="projects" aria-labelledby="projectsTitle">
+                <div class="section-head">
+                    <h2 class="section-title" id="projectsTitle" data-i18n="projectsTitle">مشاريعنا</h2>
+                    <button type="button" class="link-button" id="viewAllBtn">
+                        <span data-i18n="viewAll">عرض الكل</span>
+                        <span class="arrow">←</span>
+                    </button>
+                </div>
+                <div class="projects-row" id="projectsRow"></div>
+            </section>
+        </main>
+    </div>
+
+    <!-- ===== صفحات التبويبات (تبرعاتي / المبادرات / حسابي) ===== -->
+    <div class="view tabpage" id="tabPage" hidden>
+        <header class="top-bar">
+            <button class="lang-button" id="tabLangButton">EN</button>
+            <div class="logo">
+                <span class="logo-icon" data-icon="leaf"></span>
+                <span class="logo-text">Ajrt | اجر</span>
+            </div>
+            <span class="bar-spacer"></span>
+        </header>
+        <main class="panel" id="tabContent"></main>
+    </div>
+
+    <!-- ===== شريط التنقل السفلي ===== -->
+    <nav class="tabbar" id="tabbar" hidden>
+        <button type="button" class="tab is-active" data-tab="home">
+            <span data-icon="home"></span><span data-i18n="tabHome">الرئيسية</span>
+        </button>
+        <button type="button" class="tab" data-tab="donations">
+            <span data-icon="heart"></span><span data-i18n="tabDonations">تبرعاتي</span>
+        </button>
+        <button type="button" class="tab" data-tab="initiatives">
+            <span data-icon="folder"></span><span data-i18n="tabInitiatives">المبادرات</span>
+        </button>
+        <button type="button" class="tab" data-tab="account">
+            <span data-icon="user"></span><span data-i18n="tabAccount">حسابي</span>
+        </button>
+    </nav>
+
+    <!-- ===== صفحة حالات فئة تبرع معيّنة ===== -->
+    <div class="view category" id="category" hidden>
+        <header class="top-bar">
+            <button class="lang-button" id="catLangButton">EN</button>
+            <div class="logo">
+                <span class="logo-icon" data-icon="leaf"></span>
+                <span class="logo-text">Ajrt | اجر</span>
+            </div>
+            <button class="back-button" id="catBack" data-i18n="back">رجوع</button>
+        </header>
+
+        <main class="cat-page">
+            <div class="cat-hero">
+                <span class="cat-hero-icon" id="catHeroIcon" aria-hidden="true"></span>
+                <div>
+                    <h1 id="catHeroName"></h1>
+                    <p id="catHeroDesc"></p>
+                </div>
+            </div>
+            <nav class="cat-chips" id="catChips" aria-label="فئات التبرع"></nav>
+            <p class="cat-count" id="catCount"></p>
+            <div class="cat-list" id="catList"></div>
+        </main>
+    </div>
+
+    <!-- ===== صفحة تفاصيل الحالة ===== -->
+    <div class="view case-detail" id="caseDetail" hidden>
+        <header class="top-bar">
+            <button class="lang-button" id="detailLangButton">EN</button>
+            <div class="logo">
+                <span class="logo-icon" data-icon="leaf"></span>
+                <span class="logo-text">Ajrt | اجر</span>
+            </div>
+            <button class="back-button" id="detailBack" data-i18n="back">رجوع</button>
+        </header>
+
+        <main class="detail">
+            <img class="detail-img" id="detailImg" alt="" draggable="false">
+            <h1 class="detail-title" id="detailTitle"></h1>
+            <p class="detail-tags" id="detailTags"></p>
+
+            <div class="progress" aria-hidden="true"><div class="progress-fill" id="detailFill"></div></div>
+            <div class="detail-stats">
+                <div><strong id="detailRaised"></strong><span data-i18n="raised">تم جمعه</span></div>
+                <div><strong id="detailGoal"></strong><span data-i18n="goal">الهدف</span></div>
+                <div><strong id="detailPercent"></strong><span data-i18n="progress">نسبة الإنجاز</span></div>
+                <div><strong id="detailDonors"></strong><span data-i18n="donors">متبرع</span></div>
+            </div>
+
+            <h2 data-i18n="story">قصة الحالة</h2>
+            <p class="detail-story" id="detailStory"></p>
+
+            <section class="donate-box">
+                <h2 data-i18n="donateTitle">تبرّع لهذه الحالة</h2>
+                <div class="amount-chips" id="amountChips"></div>
+                <label for="customAmount" data-i18n="customAmount">أو أدخل مبلغاً آخر</label>
+                <input type="number" id="customAmount" min="1" inputmode="numeric">
+                <p class="donate-msg" id="donateMsg" role="status"></p>
+                <button class="hero-button donate-submit" id="donateSubmit">
+                    <span data-i18n="donateBtn">تبرع الآن</span>
+                </button>
+            </section>
+        </main>
+    </div>
+
+    <!-- ===== صفحة إعدادات الأدمن ===== -->
+    <div class="view admin" id="admin" hidden>
+        <header class="top-bar">
+            <button class="lang-button" id="adminLangButton">EN</button>
+            <div class="logo">
+                <span class="logo-icon" data-icon="leaf"></span>
+                <span class="logo-text">Ajrt | اجر</span>
+            </div>
+            <button class="back-button" id="adminLogout" data-i18n="logout">تسجيل الخروج</button>
+        </header>
+        <main class="panel">
+            <h1 data-i18n="adminTitle">إعدادات الأدمن</h1>
+            <p><span data-i18n="usersCount">عدد المستخدمين المسجلين:</span> <strong id="adminUsersCount">0</strong></p>
+            <ul class="user-list" id="adminUsersList"></ul>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
