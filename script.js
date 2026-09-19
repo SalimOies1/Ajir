@@ -145,8 +145,8 @@
   /* ===== بيانات الأدمن وتخزين الحسابات (محلياً في المتصفح فقط) ===== */
   const ADMIN_USER = 'admin 1';
   const ADMIN_PASS = '1234';
-  const USERS_KEY = 'Ajer-users';
-  const SESSION_KEY = 'Ajer-session';
+  const USERS_KEY = 'Ajir-users';
+  const SESSION_KEY = 'Ajir-session';
 
   /* ===== حالات تجريبية مؤقتة (تُستبدل لاحقاً ببيانات حقيقية) ===== */
   const CASES = [
@@ -383,7 +383,7 @@
   const tabLogin = document.getElementById('tabLogin');
   const tabRegister = document.getElementById('tabRegister');
 
-  let currentLang = localStorage.getItem('Ajer-lang') || 'ar';
+  let currentLang = localStorage.getItem('Ajir-lang') || 'ar';
   let splashTimers = [];
   let authMode = 'login';
   let lastError = null;
@@ -843,7 +843,7 @@
 
   /* ===== شريط التبويبات السفلي وصفحاته ===== */
   let currentTab = 'home';
-  const DON_KEY = 'Ajer-donations';
+  const DON_KEY = 'Ajir-donations';
 
   function loadDonations() {
     try {
@@ -1159,7 +1159,7 @@
   /* ===== تبديل اللغة (من الصفحة الرئيسية) ===== */
   function toggleLanguage() {
     currentLang = currentLang === 'ar' ? 'en' : 'ar';
-    localStorage.setItem('Ajer-lang', currentLang);
+    localStorage.setItem('Ajir-lang', currentLang);
     applyDirection(currentLang);
     applyHomeTexts(currentLang);
     renderCases();
